@@ -26,6 +26,7 @@ promptD		BYTE"What is value of D?", 0
 main PROC
 	
 	; code goes here
+	; code for variable C and prompt
 	mov edx, OFFSET promptC
     call WriteString
     call ReadInt
@@ -33,7 +34,19 @@ main PROC
 
 	mov edx, OFFSET variableC
 	call WriteString
+	mov eax, variableC
 	call WriteInt
+
+	; code for variableD
+    mov edx, OFFSET promptD
+    call WriteString
+    call ReadInt
+    movsx eax, al   ; Move only the low byte of eax into eax
+    mov variableD, al
+
+    mov edx, OFFSET promptD
+    movsx eax, variableD   ; Sign extend 8-bit D to 32 bits
+    call WriteInt
 	call DumpRegs ; displays registers in console
 
 	exit
