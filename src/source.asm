@@ -15,21 +15,25 @@ INCLUDELIB user32.lib
 .data
     
 	; data declarations go here
-	variableA   SDWORD  ?               ; 32-bit signed integer
+	variableA   SDWORD  -543210               ; 32-bit signed integer
     variableB   SDWORD  -3210           ; 16-bit signed integer
     variableC   SDWORD  ?               ; 32-bit signed integer
     variableD   SBYTE   ?               ; 8-bit signed integer
 
-promptA 	BYTE "What is value of A?", 0
-
+promptC 	BYTE "What is value of C?", 0
+promptD		BYTE"What is value of D?", 0
 .code
 main PROC
 	
 	; code goes here
-	mov edx, OFFSET promptA
+	mov edx, OFFSET promptC
     call WriteString
     call ReadInt
-    mov variableA, eax
+    mov variableC, eax
+
+	mov edx, OFFSET variableC
+	call WriteString
+	call WriteInt
 	call DumpRegs ; displays registers in console
 
 	exit
