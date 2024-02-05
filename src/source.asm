@@ -19,10 +19,11 @@ INCLUDELIB user32.lib
     variableB   SDWORD  -3210           ; 16-bit signed integer
     variableC   SDWORD  ?               ; 32-bit signed integer
     variableD   SBYTE   ?               ; 8-bit signed integer
-	variableZ	SDWORD ? : 32 bit signed integer variable
 
 promptC 	BYTE "What is value of C?", 0
 promptD		BYTE"What is value of D?", 0
+myString	BYTE"Z = (A - B) - (C - D)", 0
+
 .code
 main PROC
 	
@@ -48,6 +49,11 @@ main PROC
     mov edx, OFFSET promptD
     movsx eax, variableD   ; Sign extend 8-bit D to 32 bits
     call WriteInt
+
+	call Crlf
+	mov edx, OFFSET myString
+	call WriteString
+
 	call DumpRegs ; displays registers in console
 
 	exit
