@@ -19,6 +19,7 @@ INCLUDELIB user32.lib
     variableB   SDWORD  -3210           ; 16-bit signed integer
     variableC   SDWORD  ?               ; 32-bit signed integer
     variableD   SBYTE   ?               ; 8-bit signed integer
+	variableZ	SDWORD ? : 32 bit signed integer variable
 
 promptC 	BYTE "What is value of C?", 0
 promptD		BYTE"What is value of D?", 0
